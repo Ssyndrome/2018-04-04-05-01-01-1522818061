@@ -18,10 +18,10 @@ public class InputValidator {
     }
 
     private boolean validateSingleGigit(List<String> numList, int numCount) {
-        return numList.stream()
+        return numCount == numList.stream()
                 .map(num -> parseInt(num))
                 .distinct()
-                .filter(num -> num < 10).count() == numCount;
+                .filter(num -> num < 10).count();
     }
 
     private Boolean validateDigitsCount(List<String> numList, int numCount) {
