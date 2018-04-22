@@ -30,8 +30,7 @@ public class Game {
 
     public GuessResult guess(Answer inputAnswer) {
         final int[] existRecord = actualAnswer.check(inputAnswer).getValue();
-        String result = String.format("%1$sA%2$sB", existRecord[0], existRecord[1]);
-        GuessResult guessResult = new GuessResult(result, inputAnswer);
+        GuessResult guessResult = new GuessResult(String.format("%1$sA%2$sB", existRecord[0], existRecord[1]), inputAnswer);
         guessResults.add(guessResult);
         return guessResult;
     }
@@ -45,15 +44,12 @@ public class Game {
     }
 
     public String checkStatus() {
-        String status;
         if (guessResults.size() >= MAX_TIMES) {
-            status = FAIL;
+            return FAIL;
         } else if (checkCorrectGuessResult()) {
-            status = SUCCESS;
-        } else {
-            status = CONTINUE;
+            return SUCCESS;
         }
-        return status;
+        return CONTINUE;
     }
 
     private boolean checkCorrectGuessResult() {
