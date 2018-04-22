@@ -29,7 +29,7 @@ public class Answer {
 
     public void validate() throws OutOfRangeAnswerException {
         long validatedNum = numList.stream()
-                .map(num -> parseInt(num))
+                .map(Integer::parseInt)
                 .distinct()
                 .filter(num -> num < 10).count();
         if (validatedNum < numList.size()) {
